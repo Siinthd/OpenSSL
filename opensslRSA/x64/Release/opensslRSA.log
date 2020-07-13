@@ -1,0 +1,5 @@
+﻿  RSAKey.cpp
+  Generating code
+d:\repository\c++\opensslrsa\opensslrsa\rsakey.cpp(32): error C4716: 'andeme::RSAKey::getPublicKey': must return a value
+  All 4 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+LINK : fatal error LNK1257: code generation failed
