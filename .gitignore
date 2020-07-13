@@ -40,3 +40,13 @@ thirdparty/qt5
 /Debug
 /x64
 /.vs
+opensslRSA/x64/Debug/opensslRSA.log
+opensslRSA/x64/Debug/opensslRSA.tlog/CL.command.1.tlog
+opensslRSA/x64/Debug/opensslRSA.tlog/CL.read.1.tlog
+opensslRSA/x64/Debug/opensslRSA.tlog/CL.write.1.tlog
+opensslRSA/x64/Debug/opensslRSA.tlog/link.command.1.tlog
+opensslRSA/x64/Debug/opensslRSA.tlog/link.read.1.tlog
+opensslRSA/x64/Debug/opensslRSA.tlog/link.write.1.tlog
+opensslRSA/x64/Debug/opensslRSA.tlog/opensslRSA.lastbuildstate
+opensslRSA/x64/Debug/vc141.idb
+opensslRSA/x64/Debug/vc141.pdb

@@ -28,6 +28,6 @@ namespace andeme {
 
 		
 		EVP_PKEY* evpkey = EVP_PKEY_new();
-		EVP_PKEY_set1_RSA(evpkey, pKeyPair);
+		EVP_PKEY_set1_RSA(evpkey, pKeyPair); return pKeyPair;
 	}
 }
