@@ -26,8 +26,17 @@ namespace andeme {
 			RSA_free(pKeyPair);
 		pKeyPair = RSA_generate_key(RSA_KEYLENGTH, RSA_E, NULL, NULL);
 
-		
-		EVP_PKEY* evpkey = EVP_PKEY_new();
-		EVP_PKEY_set1_RSA(evpkey, pKeyPair); return pKeyPair;
+
+		PEM_write_bio_RSAPublicKey(bio, pKeyPair);
+		size_t length = BIO_ctrl_pending(bio);
+
+		void *buf = static_cast<void*>(new std::string);
+
+		//void* buf = nullptr;
+		BIO_read(bio, buf, length);
+
+		std::string *pstr = static_cast<std::string *>(buf);
+		std::cout << pstr;
+		return pKeyPair;
 	}
 }
