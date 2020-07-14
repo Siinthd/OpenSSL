@@ -30,13 +30,14 @@ namespace andeme {
 		PEM_write_bio_RSAPublicKey(bio, pKeyPair);
 		size_t length = BIO_ctrl_pending(bio);
 
-		void *buf = static_cast<void*>(new std::string);
+		std::string pstr;
+		void* buf = malloc(length);
 
-		//void* buf = nullptr;
 		BIO_read(bio, buf, length);
 
-		std::string *pstr = static_cast<std::string *>(buf);
-		std::cout << pstr;
+		std::string pem = std::string(reinterpret_cast<const char*>(buf), length);
+		std::cout << pem;
+	
 		return pKeyPair;
 	}
 }
