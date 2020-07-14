@@ -23,7 +23,8 @@ namespace andeme {
 
 		RSAKey();
 		~RSAKey();
-		RSA* getPublicKey();
+		std::string getPublicKey();
+		std::string getPrivate();
 
 	private:
 

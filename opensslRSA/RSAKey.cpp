@@ -9,7 +9,7 @@ namespace andeme {
 	{
 	}
 
-	RSA* RSAKey::getPublicKey() 
+	std::string RSAKey::getPublicKey()
 	{
 		RSA* pKeyPair = nullptr;
 		BIO* bio;
@@ -36,8 +36,28 @@ namespace andeme {
 		BIO_read(bio, buf, length);
 
 		std::string pem = std::string(reinterpret_cast<const char*>(buf), length);
-		std::cout << pem;
 	
-		return pKeyPair;
+		return pem;
+	}
+	std::string RSAKey::getPrivate()
+	{
+		RSA* pKeyPair = nullptr;
+		BIO* bio;
+		bio = BIO_new(BIO_s_mem());
+		pKeyPair = RSA_generate_key(RSA_KEYLENGTH, RSA_E, NULL, NULL);
+
+		int ret = PEM_write_bio_RSAPrivateKey(bio, pKeyPair, nullptr, nullptr, 0, nullptr, nullptr);
+
+
+		size_t length = BIO_ctrl_pending(bio);
+
+		std::string pstr;
+		void* buf = malloc(length);
+
+		BIO_read(bio, buf, length);
+
+		std::string pem = std::string(reinterpret_cast<const char*>(buf), length);
+
+		return pem;
 	}
 }
