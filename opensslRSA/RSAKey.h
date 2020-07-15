@@ -28,6 +28,9 @@ namespace andeme {
 
 	private:
 
+		RSA* pKeyPair;
+		BIO* bio;
+		const EVP_CIPHER* cipher;
 	};
 
 }
