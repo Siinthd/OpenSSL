@@ -40,6 +40,7 @@ thirdparty/qt5
 /Debug
 /x64
 /.vs
+/.git
 opensslRSA/x64/Debug/opensslRSA.log
 opensslRSA/x64/Debug/opensslRSA.tlog/CL.command.1.tlog
 opensslRSA/x64/Debug/opensslRSA.tlog/CL.read.1.tlog
