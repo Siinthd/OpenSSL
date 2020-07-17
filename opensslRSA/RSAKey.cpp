@@ -2,22 +2,18 @@
 
 namespace andeme {
 	RSAKey::RSAKey() : bio(BIO_new(BIO_s_mem())),
-		pKeyPair(RSA_new()),
-		cipher(EVP_get_cipherbyname("aes-256-cbc"))
+		pKeyPair(RSA_new())
 	{
 		BIGNUM* e = BN_new();
 		BN_set_word(e, RSA_F4);
-			int ret = RSA_generate_key_ex(pKeyPair, RSA_KEYLENGTH, e, 0);
-			if (cipher == NULL)
-				OpenSSL_add_all_algorithms();
-
+		RSA_generate_key_ex(pKeyPair, RSA_KEYLENGTH, e, 0);
 	}
 
 	RSAKey::~RSAKey()
 	{
 		if (pKeyPair != nullptr)
 			RSA_free(pKeyPair);
-		if (bio !=nullptr)
+		if (bio != nullptr)
 			BIO_free(bio);
 	}
 
@@ -27,12 +23,10 @@ namespace andeme {
 		size_t length = BIO_ctrl_pending(bio);
 
 		std::string pstr;
-		void* buf = malloc(length);
+		pstr.resize(length);
+		BIO_read(bio, pstr.data(), length);
 
-		BIO_read(bio, buf, length);
-
-		std::string pem = std::string(reinterpret_cast<const char*>(buf), length);
-		free(buf);
+		std::string pem = std::string(reinterpret_cast<const char*>(pstr.data()), length);
 		return pem;
 	}
 	std::string RSAKey::getPrivate()
@@ -42,12 +36,15 @@ namespace andeme {
 		size_t length = BIO_ctrl_pending(bio);
 
 		std::string pstr;
-		void* buf = malloc(length);
+		pstr.resize(length);
+		BIO_read(bio, pstr.data(), length);
 
-		BIO_read(bio, buf, length);
-
-		std::string pem = std::string(reinterpret_cast<const char*>(buf), length);
-		free(buf);
+		std::string pem = std::string(reinterpret_cast<const char*>(pstr.data()), length);
 		return pem;
+	}
+
+	std::pair<std::string, std::string> RSAKey::generate()
+	{
+		return { getPublicKey(),getPrivate() };
 	}
 }

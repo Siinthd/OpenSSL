@@ -1,0 +1,15 @@
+﻿  RSAKey.cpp
+d:\repository\c++\opensslrsa\openssl\opensslrsa\rsakey.cpp(27): error C2664: 'int BIO_read(BIO *,void *,int)': cannot convert argument 2 from 'const _Elem *' to 'void *'
+          with
+          [
+              _Elem=char
+          ]
+  d:\repository\c++\opensslrsa\openssl\opensslrsa\rsakey.cpp(27): note: Conversion loses qualifiers
+d:\repository\c++\opensslrsa\openssl\opensslrsa\rsakey.cpp(40): error C2664: 'int BIO_read(BIO *,void *,int)': cannot convert argument 2 from 'const _Elem *' to 'void *'
+          with
+          [
+              _Elem=char
+          ]
+  d:\repository\c++\opensslrsa\openssl\opensslrsa\rsakey.cpp(40): note: Conversion loses qualifiers
+  Source.cpp
+d:\repository\c++\opensslrsa\openssl\opensslrsa\source.cpp(5): warning C4326: return type of 'main' should be 'int' instead of 'void'
